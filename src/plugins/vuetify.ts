@@ -1,15 +1,9 @@
 import { Hourglass } from '@/assets/icons'
 import Vue from 'vue'
-import Vuetify, {
-    VVirtualScroll
-} from 'vuetify/lib'
+import Vuetify from 'vuetify/lib'
 
-Vue.use(Vuetify, {
-    components: {
-        VVirtualScroll
-    },
-    directives: { }
-})
+Vue.use(Vuetify)
+
 // eslint-disable-next-line
 const opts: Record<string, any> = {
     icons: {

@@ -2028,12 +2028,6 @@ img:not([src$=".svg"]) {
     position: absolute
 }
 
-@media (max-width:767px) {
-    body {
-        padding-top: 112px
-    }
-}
-
 header {
     background: transparent;
     padding: 4rem 3rem 2.75rem;

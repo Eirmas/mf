@@ -12,7 +12,7 @@ import Vue from 'vue'
 import '@/assets/css/forsvaret.scss'
 import CustomNavbar from '@/components/templates/CustomNavbar.vue'
 import CustomFooter from '@/components/templates/CustomFooter.vue'
-import MilitarySlang from '@/components/templates/military-slang/MilitarySlang.vue'
+import MilitarySlang from '@/components/military-slang/MilitarySlang.vue'
 
 @Component({
     name: 'Index',

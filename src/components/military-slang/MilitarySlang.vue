@@ -1,12 +1,8 @@
 <template>
     <div class="custom-mf__main">
         <div style="background: #EDE9E8" class="px-3">
-            <h1 class="h2 mb-5 text-center">Militære forkortelser</h1>
-            <p class="p text-center mb-5">
-                Søk på en forkortelse
-                <br>
-                eller en beskrivelse.
-            </p>
+            <h1 class="h1 mb-5 text-center">Militære forkortelser</h1>
+            <p class="p text-center mb-5">Søk på en forkortelse<br>eller en beskrivelse.</p>
             <v-text-field
                 v-model="searchString"
                 placeholder="For eksempel HV, KV eller patruljefører"
@@ -15,23 +11,22 @@
                 append-icon="$vuetify.icons.search" />
             <p class="text-center pb-7 pt-10 mb-0">Antall forkortelser: {{ numberEntriesInSearch }}</p>
         </div>
-        <v-container
-            class="mb-12">
+        <v-container class="my-12">
             <v-simple-table class="custom-mf__table">
                 <template v-slot:default>
                     <thead>
-                    <tr>
-                        <th class="text-left">Forkortelse</th>
-                        <th class="text-left">Beskrivelse</th>
-                    </tr>
+                        <tr>
+                            <th class="text-left custom-mf__table-left">Forkortelse</th>
+                            <th class="text-left custom-mf__table-right">Beskrivelse</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <tr
-                        v-for="(slang, index) in updateSlangWords"
-                        :key="index">
-                        <td>{{ slang.word }}</td>
-                        <td>{{ slang.description }}</td>
-                    </tr>
+                        <tr
+                            v-for="(slang, index) in updateSlangWords"
+                            :key="index">
+                            <td class="custom-mf__table-left">{{ slang.word }}</td>
+                            <td class="custom-mf__table-right">{{ slang.description }}</td>
+                        </tr>
                     </tbody>
                 </template>
             </v-simple-table>
@@ -40,7 +35,7 @@
                     Viser {{ updateSlangWords.length }} av {{ numberEntriesInSearch }}
                 </div>
                 <div class="progress-bar">
-                    <div class="progress-bar__inner" ref="progressBar" />
+                    <div class="progress-bar__inner" :style="`width: ${(this.updateSlangWords.length / this.numberEntriesInSearch) * 100}%`" />
                 </div>
                 <button
                     type="button"
@@ -56,8 +51,8 @@
 <script lang="ts">
 import Vue from 'vue'
 import Component from 'vue-class-component'
-import * as v from '@/components/templates/military-slang/data/index'
-import { Slang } from '@/components/templates/military-slang/data'
+import * as v from '@/components/military-slang/data'
+import {Slang} from '@/components/military-slang/data'
 
 interface Filter {
     prioritised: number;
@@ -74,22 +69,12 @@ export default class MilitarySlang extends Vue {
     maxEntries = 30
     entriesStep = 30
 
-    $refs!: {
-        progressBar: HTMLDivElement;
-    }
-
-    mounted () {
-        this.$refs.progressBar.style.width = `${(this.updateSlangWords.length / this.numberEntriesInSearch) * 100}%`
-    }
-
     get updateSlangWords (): Slang[] {
-        const slangs: Slang[] = (!this.searchString) ?
-            this.slangWords.sort((a: Slang, b: Slang) => a.word > b.word ? 1 : -1).slice(0, this.maxEntries) :
-            this.filterWords(this.searchString).slice(0, this.maxEntries)
-        if (this.$refs.progressBar) {
-            this.$refs.progressBar.style.width = `${(slangs.length / this.numberEntriesInSearch) * 100}%`
+        if (!this.searchString) {
+            return this.slangWords.sort((a: Slang, b: Slang) => a.word > b.word ? 1 : -1).slice(0, this.maxEntries)
+        } else {
+            return this.filterWords(this.searchString).slice(0, this.maxEntries)
         }
-        return slangs
     }
 
     get numberEntriesInSearch (): number {
@@ -129,8 +114,29 @@ export default class MilitarySlang extends Vue {
     max-width: 600px !important;
     margin: 0 auto;
     th {
+        padding-bottom: 1em !important;
         border: none !important;
+        font-size: 15px !important;
         color: #191b21 !important;
+    }
+}
+.custom-mf__table-left {
+    width: 40%;
+}
+.custom-mf__table-right {
+    width: 60%;
+}
+@media (max-width:991px) {
+    .custom-mf__main {
+        padding-top: 112px;
+    }
+}
+@media (max-width:767px) {
+    .custom-mf__table-left {
+        width: auto;
+    }
+    .custom-mf__table-right {
+        width: auto;
     }
 }
 </style>
