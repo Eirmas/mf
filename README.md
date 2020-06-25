@@ -1,4 +1,4 @@
-# forsvaret
+# MF (Militære forkortelser) // Military slang words
 
 ## Project setup
 ```
