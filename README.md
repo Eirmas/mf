@@ -1,5 +1,3 @@
-# MF (Militære forkortelser) // Military slang words
-
 ## Project setup
 ```
 yarn install
