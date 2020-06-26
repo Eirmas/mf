@@ -2080,6 +2080,8 @@ header:before {
 
 .header {
     display: grid;
+    margin: 0 auto;
+    max-width: 1920px;
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center
 }
@@ -2142,7 +2144,8 @@ header:before {
 }
 
 .nav-up {
-    position: absolute
+    position: absolute;
+    max-width: unset !important;
 }
 
 @media (max-width:767px) {
@@ -2297,7 +2300,75 @@ header:before {
         background: linear-gradient(90deg, #c6c7c4 0, #c6c7c4 33.33%, #f9f9f9 0, #f9f9f9 66.66%, #fff 0, #fff)
     }
 }
+.blue-light {
+    background: #e2e6e9;
+}
+.promoted-banner__only-text .promoted-banner__media {
+    height: 50vw;
+}
+.promoted-banner__media {
+    position: relative;
+    max-width: 1920px;
+    margin: auto;
+}
+.promoted-banner__body {
+    margin: 0 auto;
+    width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    text-align: center;
+    max-width: 47rem;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+}
+.promoted-banner__only-text .promoted-banner__body, .promoted-banner__only-text a {
+    color: #191b21 !important;
+}
+.promoted-banner__label {
+    font-size: .8rem;
+}
+.label {
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-style: normal;
+}
+.promoted-banner__cite {
+    margin-top: 2rem;
+}
+.promoted-banner__button-wrapper .button {
+    border: 1px solid #191b21;
+    padding: 1rem 3.1rem;
+    display: inline-block;
+}
+.promoted-banner__header {
+    font-size: 1.75rem;
+}
+.promoted-banner__button-wrapper .button {
+    padding: .625rem 1.5rem;
+}
+.promoted-banner__only-text .promoted-banner__body, .promoted-banner__only-text a {
+    color: #191b21;
+}
+.promoted-banner__button-wrapper a {
+    text-decoration: none;
+}
+.promoted-banner__body a {
+    color: #191b21;
+}
+.promoted-banner__header {
+    font-size: 1.75rem;
+}
 
+.promoted-banner__button-wrapper {
+    margin-top: 3.75rem;
+}
+.promoted-banner__only-text .promoted-banner__button-wrapper .button {
+    border: 1px solid #191b21;
+}
 @-webkit-keyframes fade-in {
     0% {
         opacity: 0

@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
+import MF from '@/views/mf.vue'
+import IG from '@/views/ig.vue'
 import Index from '@/views/Index.vue'
 
 Vue.use(VueRouter)
@@ -9,6 +11,16 @@ Vue.use(VueRouter)
     path: '/',
     name: 'Index',
     component: Index
+  },
+  {
+    path: '/mf',
+    name: 'mf',
+    component: MF
+  },
+  {
+    path: '/ig',
+    name: 'ig',
+    component: IG
   }
 ]
 
