@@ -30,12 +30,12 @@
                     </tbody>
                 </template>
             </v-simple-table>
-            <span v-show="(numberEntriesInSearch > this.maxEntries)">
+            <span v-show="(numberEntriesInSearch > maxEntries)">
                 <div role="status" class="search__label text-center pt-10">
                     Viser {{ updateSlangWords.length }} av {{ numberEntriesInSearch }}
                 </div>
                 <div class="progress-bar">
-                    <div class="progress-bar__inner" :style="`width: ${(this.updateSlangWords.length / this.numberEntriesInSearch) * 100}%`" />
+                    <div class="progress-bar__inner" :style="`width: ${(updateSlangWords.length / numberEntriesInSearch) * 100}%`" />
                 </div>
                 <button
                     type="button"
@@ -87,8 +87,8 @@ export default class MilitarySlang extends Vue {
 
     filterWords = (searchString: string): Slang[] => {
         const result: Filter[] = this.slangWords.map((v: Slang) => ({
-            prioritised: v.word.search(searchString),
-            secondary: v.description.search(searchString),
+            prioritised: v.word.toLowerCase().search(searchString.toLowerCase()),
+            secondary: v.description.toLowerCase().search(searchString.toLowerCase()),
             slang: v
         }))
         const prioritisedSorted = result.filter((v: Filter) => v.prioritised !== -1).sort((a: Filter, b: Filter) => a.prioritised > b.prioritised ? 1 : -1)
